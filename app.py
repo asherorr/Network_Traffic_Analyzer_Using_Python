@@ -5,7 +5,7 @@ import pyshark
 
 
 def pyshark_analyzing_tool():
-    cap = pyshark.FileCapture(r"C:\Users\asher\Downloads\tfp_capture.pcapng", display_filter='')
+    cap = pyshark.FileCapture(r"", display_filter='')
     for pkt in cap:
         print(pkt)
     
