@@ -18,7 +18,7 @@ def scan_open_ports_on_lm():
 
 
 def pyshark_pcap_file_reader():
-    cap = pyshark.FileCapture(r'C:\Users\asher\Downloads\tfp_capture.pcapng')
+    cap = pyshark.FileCapture(r'')
     for pkt in cap:
         print(pkt.pretty_print())
         #to print by a specific layer, such as tcp, use the try block below:
