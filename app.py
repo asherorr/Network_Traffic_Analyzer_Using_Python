@@ -18,9 +18,11 @@ def scan_open_ports_on_lm():
 
 
 def pyshark_pcap_file_reader():
-    cap = pyshark.FileCapture(r'', display_filter='')
+    cap = pyshark.FileCapture(r'')
     for pkt in cap:
         print(pkt.pretty_print())
+        #to print by a specific layer, use the line below.
+        #print(pkt["{layer}"].pretty_print())
     
 
 def analyze_network_traffic_with_pandas():
