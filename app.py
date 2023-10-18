@@ -18,19 +18,13 @@ def scan_open_ports_on_lm():
 
 
 def pyshark_pcap_file_reader():
-    cap = pyshark.FileCapture(r'')
-    for pkt in cap:
+    pcap = pyshark.FileCapture(r'', display_filter='')
+    for pkt in pcap:
         print(pkt.pretty_print())
-        #to print by a specific layer, such as tcp, use the try block below:
-        # try:
-        #     if "tcp" in pkt:
-        #         print(pkt["tcp"].pretty_print())
-        # except KeyError as e:
-        #     print(f"Error: {e}")
-    
+
 
 def analyze_network_traffic_with_pandas():
-    cap = pyshark.FileCapture(r'', display_filter='tcp')
+    cap = pyshark.FileCapture(r'', display_filter='')
     data = []
     for packet in cap:
         data.append({
@@ -43,4 +37,3 @@ def analyze_network_traffic_with_pandas():
     print(df.head())
     print(df.groupby('protocol')['length'].sum())
 
-pyshark_pcap_file_reader()
