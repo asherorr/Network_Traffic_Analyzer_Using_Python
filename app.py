@@ -23,7 +23,13 @@ def pyshark_pcap_file_reader():
         print(pkt.pretty_print())
 
 
-def analyze_network_traffic_with_pandas():
+def create_list_of_specific_fields_from_pcap():
+    pcap = pyshark.FileCapture(r'')
+    list_obj = [pkt.usb.src for pkt in pcap if "usb" in pkt and pkt.usb.has_field('src')]
+    print(list_obj)
+
+
+def obtain_network_traffic_with_pandas():
     cap = pyshark.FileCapture(r'', display_filter='')
     data = []
     for packet in cap:
@@ -36,4 +42,3 @@ def analyze_network_traffic_with_pandas():
     df = pd.DataFrame(data)
     print(df.head())
     print(df.groupby('protocol')['length'].sum())
-
